@@ -1,33 +1,15 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-hackthonapp-dev-b221b-authRole",
-      "UnauthRoleArn": "arn:aws:iam::950848370655:role/amplify-hackthonapp-dev-b221b-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::950848370655:role/amplify-hackthonapp-dev-b221b-authRole",
+      "AuthRoleName": "amplify-myapp1-dev-f74c0-authRole",
+      "UnauthRoleArn": "arn:aws:iam::950848370655:role/amplify-myapp1-dev-f74c0-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::950848370655:role/amplify-myapp1-dev-f74c0-authRole",
       "Region": "us-west-2",
-      "DeploymentBucketName": "amplify-hackthonapp-dev-b221b-deployment",
-      "UnauthRoleName": "amplify-hackthonapp-dev-b221b-unauthRole",
-      "StackName": "amplify-hackthonapp-dev-b221b",
-      "StackId": "arn:aws:cloudformation:us-west-2:950848370655:stack/amplify-hackthonapp-dev-b221b/a5ab1e10-06ce-11f0-bb66-02efb027207b",
-      "AmplifyAppId": "d1i2eqjp19fonn",
-      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-hackthonapp-dev-b221b-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
-    },
-    "categories": {
-      "auth": {
-        "hackthonapp1dc95aff": {}
-      },
-      "function": {
-        "S3Triggere685b0a0": {
-          "deploymentBucketName": "amplify-hackthonapp-dev-b221b-deployment",
-          "s3Key": "amplify-builds/S3Triggere685b0a0-54777830694b764d6271-build.zip"
-        }
-      },
-      "storage": {
-        "s3postAndOpenAPI": {}
-      },
-      "api": {
-        "api9cf4ad88": {}
-      }
+      "DeploymentBucketName": "amplify-myapp1-dev-f74c0-deployment",
+      "UnauthRoleName": "amplify-myapp1-dev-f74c0-unauthRole",
+      "StackName": "amplify-myapp1-dev-f74c0",
+      "StackId": "arn:aws:cloudformation:us-west-2:950848370655:stack/amplify-myapp1-dev-f74c0/599e8030-073b-11f0-9123-024bd1fa0e81",
+      "AmplifyAppId": "d1qa98uhzxhrp0"
     }
   }
 }

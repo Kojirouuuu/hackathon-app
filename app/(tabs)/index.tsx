@@ -13,13 +13,12 @@ import { View, Text } from "react-native";
 import { Camera, CheckCircle2 } from "lucide-react-native";
 import * as ImagePicker from "expo-image-picker";
 import { uploadData, getUrl, list } from "aws-amplify/storage";
-import { getCurrentUser } from "aws-amplify/auth";
+import { getCurrentUser, fetchAuthSession } from "aws-amplify/auth";
 import { useEffect } from "react";
-
 import ParallaxScrollView from "@/../components/layouts/ParallaxScrollView";
 import { useState } from "react";
 
-Amplify.configure(awsconfig);
+// Amplifyの設定は_layout.tsxで行うため、ここでの設定は不要
 
 interface DetectedItem {
   item_name: string;
@@ -32,10 +31,45 @@ export default function HomeScreen() {
   const [lastUploadTime, setLastUploadTime] = useState<string | null>(null);
   const [detectedItems, setDetectedItems] = useState<DetectedItem[]>([]);
   const [isLoadingItems, setIsLoadingItems] = useState(false);
+  const [authInfo, setAuthInfo] = useState<{
+    userId: string | null;
+    identityId: string | null;
+    accessToken: string | null;
+    idToken: string | null;
+  }>({
+    userId: null,
+    identityId: null,
+    accessToken: null,
+    idToken: null,
+  });
 
   useEffect(() => {
+    loadUserInfo();
     loadLatestItems();
   }, []);
+
+  const loadUserInfo = async () => {
+    try {
+      const user = await getCurrentUser();
+      const session = await fetchAuthSession();
+      const tokens = session.tokens;
+      const identityId = session.identityId;
+
+      setAuthInfo({
+        userId: user.username,
+        identityId: identityId || null,
+        accessToken: tokens?.accessToken?.toString() || null,
+        idToken: tokens?.idToken?.toString() || null,
+      });
+
+      console.log("User ID:", user.username);
+      console.log("Identity ID:", identityId);
+      console.log("Access Token:", tokens?.accessToken?.toString());
+      console.log("ID Token:", tokens?.idToken?.toString());
+    } catch (error) {
+      console.error("Error loading user info:", error);
+    }
+  };
 
   const loadLatestItems = async () => {
     try {
@@ -239,6 +273,25 @@ export default function HomeScreen() {
       );
     }
 
+    const response = fetch("https://hackathon-2025.link.yt/detect", {
+      method: "POST",
+      headers: {
+        accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      // body: '{\n  "file": {\n    "filename": "public/fridge-contents/k5mikanmikan@gmail.com/20250322_1.jpg",\n    "filetype": "image/jpeg"\n  },\n  "auth": {\n    "token": ""\n  }\n}',
+      body: JSON.stringify({
+        file: {
+          filename:
+            "public/fridge-contents/k5mikanmikan@gmail.com/20250322_1.jpg",
+          filetype: "image/jpeg",
+        },
+        auth: {
+          token: authInfo.accessToken,
+        },
+      }),
+    });
+
     return (
       <View style={styles.detectedItemsContainer}>
         <Text style={styles.sectionTitle}>Detected Items</Text>
@@ -270,6 +323,21 @@ export default function HomeScreen() {
         <Text style={styles.subtitle}>
           Upload photos to track your ingredients
         </Text>
+
+        {/* 認証情報の表示 */}
+        <View style={styles.authInfoContainer}>
+          <Text style={styles.authInfoText}>
+            Identity ID: {authInfo.identityId}
+          </Text>
+          <ScrollView style={styles.tokenScrollView}>
+            <Text style={styles.authInfoText}>
+              Access Token: {authInfo.accessToken}
+            </Text>
+            <Text style={styles.authInfoText}>
+              ID Token: {authInfo.idToken}
+            </Text>
+          </ScrollView>
+        </View>
 
         <TouchableOpacity
           style={styles.uploadButton}
@@ -418,5 +486,29 @@ const styles = StyleSheet.create({
     fontFamily: "Inter-Regular",
     fontSize: 16,
     color: "#666",
+  },
+  authInfoContainer: {
+    width: "100%",
+    backgroundColor: "#f5f5f5",
+    padding: 16,
+    borderRadius: 8,
+    marginTop: 16,
+    marginBottom: 16,
+    maxHeight: 200,
+  },
+  tokenScrollView: {
+    maxHeight: 120,
+  },
+  authInfoTitle: {
+    fontFamily: "Inter-Bold",
+    fontSize: 16,
+    marginBottom: 8,
+  },
+  authInfoText: {
+    fontFamily: "Inter-Regular",
+    fontSize: 14,
+    color: "#666",
+    marginBottom: 4,
+    flexWrap: "wrap",
   },
 });

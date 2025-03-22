@@ -33,33 +33,15 @@ export const borderRadius = {
  */
 export const shadows = StyleSheet.create({
   sm: {
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.18,
-    shadowRadius: 1.0,
+    boxShadow: "0px 1px 1px rgba(0, 0, 0, 0.18)",
     elevation: 1,
   },
   md: {
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
+    boxShadow: "0px 2px 3.84px rgba(0, 0, 0, 0.25)",
     elevation: 5,
   },
   lg: {
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    shadowOpacity: 0.3,
-    shadowRadius: 4.65,
+    boxShadow: "0px 4px 4.65px rgba(0, 0, 0, 0.3)",
     elevation: 8,
   },
 });

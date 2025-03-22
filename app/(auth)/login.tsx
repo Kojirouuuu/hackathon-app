@@ -85,7 +85,7 @@ export default function LoginScreen() {
         <Text style={styles.subtitle}>Sign in to your account</Text>
       </View>
 
-      <View style={styles.form}>
+      <form onSubmit={handleLogin} style={styles.form}>
         <TextInput
           style={styles.input}
           placeholder="Email"
@@ -116,7 +116,7 @@ export default function LoginScreen() {
             <Text style={styles.linkText}>Create Account</Text>
           </Link>
         </View>
-      </View>
+      </form>
     </View>
   );
 }
