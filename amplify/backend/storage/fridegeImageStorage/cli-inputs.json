@@ -1,0 +1,14 @@
+{
+  "resourceName": "fridegeImageStorage",
+  "policyUUID": "751185c1",
+  "bucketName": "fridge-app-with-amplify323",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "S3Trigger71213c54",
+  "groupAccess": {}
+}

@@ -9,7 +9,29 @@
       "UnauthRoleName": "amplify-myapp1-dev-f74c0-unauthRole",
       "StackName": "amplify-myapp1-dev-f74c0",
       "StackId": "arn:aws:cloudformation:us-west-2:950848370655:stack/amplify-myapp1-dev-f74c0/599e8030-073b-11f0-9123-024bd1fa0e81",
-      "AmplifyAppId": "d1qa98uhzxhrp0"
+      "AmplifyAppId": "d1qa98uhzxhrp0",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-myapp1-dev-f74c0-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+    },
+    "categories": {
+      "auth": {
+        "myapp19f8a78ef": {}
+      },
+      "function": {
+        "myapp19f8a78efCustomMessage": {
+          "REDIRECTURL": "exp://localhost:19000/--/auth/callback",
+          "EMAILSUBJECT": "Hello Fridge!",
+          "EMAILMESSAGE": "",
+          "deploymentBucketName": "amplify-myapp1-dev-f74c0-deployment",
+          "s3Key": "amplify-builds/myapp19f8a78efCustomMessage-6865635a4e4f75436a41-build.zip"
+        },
+        "S3Trigger71213c54": {
+          "deploymentBucketName": "amplify-myapp1-dev-f74c0-deployment",
+          "s3Key": "amplify-builds/S3Trigger71213c54-34785273326f6859596b-build.zip"
+        }
+      },
+      "storage": {
+        "fridegeImageStorage": {}
+      }
     }
   }
 }
