@@ -35,6 +35,7 @@ export default function HomeScreen() {
   const [authInfo, setAuthInfo] = useState<{
     identityId: string;
     tokens: any;
+    username: string;
   } | null>(null);
 
   useEffect(() => {
@@ -47,9 +48,11 @@ export default function HomeScreen() {
       const session = await fetchAuthSession();
       console.info("🔑 Auth session loaded:", session);
       if (session.identityId) {
+        const { username } = await getCurrentUser();
         setAuthInfo({
           identityId: session.identityId,
           tokens: session.tokens,
+          username,
         });
       } else {
         console.warn("⚠️ No identity ID found in session");
@@ -293,6 +296,10 @@ export default function HomeScreen() {
           <View style={styles.authInfoRow}>
             <Text style={styles.authLabel}>Identity ID:</Text>
             <Text style={styles.authValue}>{authInfo.identityId}</Text>
+          </View>
+          <View style={styles.authInfoRow}>
+            <Text style={styles.authLabel}>Username:</Text>
+            <Text style={styles.authValue}>{authInfo.username}</Text>
           </View>
           <View style={styles.authInfoRow}>
             <Text style={styles.authLabel}>Access Token:</Text>
