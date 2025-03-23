@@ -1,22 +1,6 @@
 {
-  "api": {
-    "api9cf4ad88": {
-      "dependsOn": [
-        {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "function",
-          "resourceName": "S3Triggere685b0a0"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "API Gateway"
-    }
-  },
   "auth": {
-    "hackthonapp1dc95aff": {
+    "fridgeapp11d84866": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -42,32 +26,32 @@
     }
   },
   "function": {
-    "S3Triggere685b0a0": {
+    "S3Trigger0aacac94": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }
   },
   "parameters": {
-    "AMPLIFY_function_S3Triggere685b0a0_deploymentBucketName": {
+    "AMPLIFY_function_S3Trigger0aacac94_deploymentBucketName": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "S3Triggere685b0a0"
+          "resourceName": "S3Trigger0aacac94"
         }
       ]
     },
-    "AMPLIFY_function_S3Triggere685b0a0_s3Key": {
+    "AMPLIFY_function_S3Trigger0aacac94_s3Key": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "S3Triggere685b0a0"
+          "resourceName": "S3Trigger0aacac94"
         }
       ]
     }
   },
   "storage": {
-    "s3postAndOpenAPI": {
+    "storageforfridge": {
       "dependsOn": [
         {
           "attributes": [
@@ -76,7 +60,7 @@
             "LambdaExecutionRole"
           ],
           "category": "function",
-          "resourceName": "S3Triggere685b0a0"
+          "resourceName": "S3Trigger0aacac94"
         }
       ],
       "providerPlugin": "awscloudformation",

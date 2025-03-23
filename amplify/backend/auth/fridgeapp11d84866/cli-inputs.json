@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "hackthonapp1dc95aff_identitypool_1dc95aff",
+    "identityPoolName": "fridgeapp11d84866_identitypool_11d84866",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "hackth1dc95aff",
-    "userPoolName": "hackthonapp1dc95aff_userpool_1dc95aff",
+    "resourceNameTruncated": "fridge11d84866",
+    "userPoolName": "fridgeapp11d84866_userpool_11d84866",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -31,12 +31,13 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "hackth1dc95aff_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "fridge11d84866_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "1dc95aff",
-    "resourceName": "hackthonapp1dc95aff",
+    "sharedId": "11d84866",
+    "resourceName": "fridgeapp11d84866",
     "authSelections": "identityPoolAndUserPool",
     "useDefault": "default",
+    "triggers": {},
     "userPoolGroupList": [],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,

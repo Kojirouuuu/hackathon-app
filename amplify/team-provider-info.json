@@ -1,32 +1,28 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-hackthonapp-dev-b221b-authRole",
-      "UnauthRoleArn": "arn:aws:iam::950848370655:role/amplify-hackthonapp-dev-b221b-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::950848370655:role/amplify-hackthonapp-dev-b221b-authRole",
+      "AuthRoleName": "amplify-fridgeapp-dev-300b2-authRole",
+      "UnauthRoleArn": "arn:aws:iam::950848370655:role/amplify-fridgeapp-dev-300b2-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::950848370655:role/amplify-fridgeapp-dev-300b2-authRole",
       "Region": "us-west-2",
-      "DeploymentBucketName": "amplify-hackthonapp-dev-b221b-deployment",
-      "UnauthRoleName": "amplify-hackthonapp-dev-b221b-unauthRole",
-      "StackName": "amplify-hackthonapp-dev-b221b",
-      "StackId": "arn:aws:cloudformation:us-west-2:950848370655:stack/amplify-hackthonapp-dev-b221b/a5ab1e10-06ce-11f0-bb66-02efb027207b",
-      "AmplifyAppId": "d1i2eqjp19fonn",
-      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-hackthonapp-dev-b221b-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+      "DeploymentBucketName": "amplify-fridgeapp-dev-300b2-deployment",
+      "UnauthRoleName": "amplify-fridgeapp-dev-300b2-unauthRole",
+      "StackName": "amplify-fridgeapp-dev-300b2",
+      "StackId": "arn:aws:cloudformation:us-west-2:950848370655:stack/amplify-fridgeapp-dev-300b2/de16c920-0787-11f0-a42f-0a9cc47a717f",
+      "AmplifyAppId": "d157u4ys1kk5c6"
     },
     "categories": {
       "auth": {
-        "hackthonapp1dc95aff": {}
+        "fridgeapp11d84866": {}
       },
       "function": {
-        "S3Triggere685b0a0": {
-          "deploymentBucketName": "amplify-hackthonapp-dev-b221b-deployment",
-          "s3Key": "amplify-builds/S3Triggere685b0a0-54777830694b764d6271-build.zip"
+        "S3Trigger0aacac94": {
+          "deploymentBucketName": "amplify-fridgeapp-dev-300b2-deployment",
+          "s3Key": "amplify-builds/S3Trigger0aacac94-57577745774c6d33764e-build.zip"
         }
       },
       "storage": {
-        "s3postAndOpenAPI": {}
-      },
-      "api": {
-        "api9cf4ad88": {}
+        "storageforfridge": {}
       }
     }
   }

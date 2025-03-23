@@ -13,7 +13,7 @@ import { View, Text } from "react-native";
 import { Camera, CheckCircle2 } from "lucide-react-native";
 import * as ImagePicker from "expo-image-picker";
 import { uploadData, getUrl, list } from "aws-amplify/storage";
-import { getCurrentUser } from "aws-amplify/auth";
+import { getCurrentUser, fetchAuthSession } from "aws-amplify/auth";
 import { useEffect } from "react";
 
 import ParallaxScrollView from "@/components/layouts/ParallaxScrollView";
@@ -32,10 +32,32 @@ export default function HomeScreen() {
   const [lastUploadTime, setLastUploadTime] = useState<string | null>(null);
   const [detectedItems, setDetectedItems] = useState<DetectedItem[]>([]);
   const [isLoadingItems, setIsLoadingItems] = useState(false);
+  const [authInfo, setAuthInfo] = useState<{
+    identityId: string;
+    tokens: any;
+  } | null>(null);
 
   useEffect(() => {
+    loadAuthSession();
     loadLatestItems();
   }, []);
+
+  const loadAuthSession = async () => {
+    try {
+      const session = await fetchAuthSession();
+      console.info("🔑 Auth session loaded:", session);
+      if (session.identityId) {
+        setAuthInfo({
+          identityId: session.identityId,
+          tokens: session.tokens,
+        });
+      } else {
+        console.warn("⚠️ No identity ID found in session");
+      }
+    } catch (error) {
+      console.error("❌ Error loading auth session:", error);
+    }
+  };
 
   const loadLatestItems = async () => {
     try {

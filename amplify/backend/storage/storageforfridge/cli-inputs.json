@@ -1,0 +1,14 @@
+{
+  "resourceName": "storageforfridge",
+  "policyUUID": "399d8578",
+  "bucketName": "fridgeappstoragebucket",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "S3Trigger0aacac94",
+  "groupAccess": {}
+}
