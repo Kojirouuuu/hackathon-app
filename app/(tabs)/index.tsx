@@ -277,6 +277,40 @@ export default function HomeScreen() {
     );
   };
 
+  const renderAuthInfo = () => {
+    if (!authInfo) {
+      return (
+        <View style={styles.authContainer}>
+          <Text style={styles.authText}>認証情報を読み込み中...</Text>
+        </View>
+      );
+    }
+
+    return (
+      <View style={styles.authContainer}>
+        <Text style={styles.sectionTitle}>認証情報</Text>
+        <ScrollView style={styles.authScrollView}>
+          <View style={styles.authInfoRow}>
+            <Text style={styles.authLabel}>Identity ID:</Text>
+            <Text style={styles.authValue}>{authInfo.identityId}</Text>
+          </View>
+          <View style={styles.authInfoRow}>
+            <Text style={styles.authLabel}>Access Token:</Text>
+            <Text style={styles.authValue} numberOfLines={3}>
+              {JSON.stringify(authInfo.tokens?.accessToken, null, 2)}
+            </Text>
+          </View>
+          <View style={styles.authInfoRow}>
+            <Text style={styles.authLabel}>ID Token:</Text>
+            <Text style={styles.authValue} numberOfLines={3}>
+              {JSON.stringify(authInfo.tokens?.idToken, null, 2)}
+            </Text>
+          </View>
+        </ScrollView>
+      </View>
+    );
+  };
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
@@ -310,6 +344,7 @@ export default function HomeScreen() {
           </Text>
         )}
 
+        {renderAuthInfo()}
         {renderDetectedItems()}
       </View>
     </ParallaxScrollView>
@@ -440,5 +475,46 @@ const styles = StyleSheet.create({
     fontFamily: "Inter-Regular",
     fontSize: 16,
     color: "#666",
+  },
+  authContainer: {
+    width: "100%",
+    marginTop: 24,
+    backgroundColor: "#fff",
+    borderRadius: 12,
+    padding: 16,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  authScrollView: {
+    maxHeight: 300,
+  },
+  authInfoRow: {
+    marginBottom: 16,
+  },
+  authLabel: {
+    fontFamily: "Inter-Bold",
+    fontSize: 14,
+    color: "#666",
+    marginBottom: 4,
+  },
+  authValue: {
+    fontFamily: "Inter-Regular",
+    fontSize: 12,
+    color: "#333",
+    backgroundColor: "#f5f5f5",
+    padding: 8,
+    borderRadius: 4,
+  },
+  authText: {
+    fontFamily: "Inter-Regular",
+    fontSize: 14,
+    color: "#666",
+    textAlign: "center",
   },
 });
